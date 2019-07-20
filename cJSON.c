@@ -171,9 +171,7 @@ static char *print_double(cJSON *item)
     str = (char*) cJSON_malloc(64); /* This is a nice tradeoff. */
     if (str)
     {
-        if (fabs(floor(d) - d) <= DBL_EPSILON)
-            sprintf(str, "%.0f", d);
-        else if (fabs(d) < 1.0e-6 || fabs(d) > 1.0e9)
+        if (fabs(d) < 1.0e-6 || fabs(d) > 1.0e9)
             sprintf(str, "%lf", d);
         else
             sprintf(str, "%f", d);
@@ -699,7 +697,7 @@ static char *print_object(cJSON *item, int depth, int fmt)
     while (child)
         numentries++, child = child->next;
     /* Allocate space for the names and the objects */
-    entries = (char**) cJSON_malloc(numentries * sizeof(char*));
+    entries = (char**) cJSON_malloc(numentries * sizeof(char));
     if (!entries)
         return 0;
     names = (char**) cJSON_malloc(numentries * sizeof(char*));
@@ -1010,7 +1008,7 @@ cJSON *cJSON_CreateString(const char *string)
     if (item)
     {
         item->type = cJSON_String;
-        item->valuestring = cJSON_strdup(string);
+        item->valuestring = (char*)string;
     }
     return item;
 }
