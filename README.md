@@ -1,3 +1,5 @@
+** DO NOT USE THIS FORK, FOR EDUCATION ONLY **
+
 English | [中文](/README_cn.md)
 
 [![](https://travis-ci.org/Bwar/CJsonObject.svg?branch=master)](https://travis-ci.org/Bwar/CJsonObject) [![Author](https://img.shields.io/badge/author-@Bwar-blue.svg?style=flat)](cqc@vip.qq.com) [![License](https://img.shields.io/github/license/mashape/apistatus.svg)](LICENSE)<br/>
