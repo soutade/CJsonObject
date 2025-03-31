@@ -36,6 +36,8 @@ all: $(TARGET)
 
 CJsonObjectTest:$(OBJS)
 	$(CXX) -g -o $@ $^ $(LDFLAGS)
+	objcopy --only-keep-debug $@ $@.syms
+	strip $@
 
 %.o:%.cpp
 	$(CXX) $(INC) $(CXXFLAG) -c -o $@ $< $(LDFLAGS)
@@ -46,3 +48,5 @@ CJsonObjectTest:$(OBJS)
 clean:
 	rm -f $(OBJS)
 	rm -f $(TARGET)
+	rm -f core*
+	rm -f *.syms
